@@ -80,9 +80,9 @@ theme: next
 deploy:
   type: git
   repository: 
-    # github: ssh://git@github.com/rpSebastian/rpSebastian.github.io.git
-    coding: git@git.dev.tencent.com:rpSebastian/rpSebastian.coding.me.git
-  branch: master
+    github: ssh://git@github.com/rpSebastian/rpSebastian.github.io.git
+    # coding: git@git.dev.tencent.com:rpSebastian/rpSebastian.coding.me.git
+  branch: main
 
 # hexo-neat
 # 博文压缩
