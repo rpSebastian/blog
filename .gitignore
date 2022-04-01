@@ -1,5 +1,6 @@
 public/*
-db.json# Byte-compiled / optimized / DLL files
+db.json
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
