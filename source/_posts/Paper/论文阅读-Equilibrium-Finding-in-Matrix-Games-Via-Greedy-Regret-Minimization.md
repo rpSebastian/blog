@@ -21,36 +21,36 @@ tags:
 
 ## 背景知识
 
-对于任意的策略序列 $\pi^1, ...,\pi^T$，玩家$i$为没有执行动作 $a\_i'$的的加权**外遗憾值**为
+对于任意的策略序列 $\pi^1, ...,\pi^T$，玩家$i$为没有执行动作 $a_i'$的的加权**外遗憾值**为
 
 $$
-R^{E, T} *i(a\_i ') = \sum*{t=1}^T w\_t\left(u\_i(a\_i ', \pi\_{-i}^t ) - u\_i(\pi^t)\right)
+R^{E, T} *i(a_i ') = \sum*{t=1}^T w_t\left(u_i(a_i ', \pi_{-i}^t ) - u_i(\pi^t)\right)
 $$
 
 然后可以定义玩家$ i  $整体平均外遗憾值
 
 $$
-\bar{R}*i^{E, T} = \max*{a\_i '\in A\_i}\frac{R\_i^{E, T}(a\_i')}{\sum\_{i=1}^T w\_t}
+\bar{R}*i^{E, T} = \max*{a_i '\in A_i}\frac{R_i^{E, T}(a_i')}{\sum_{i=1}^T w_t}
 $$
 
-类似地，我们可以定义玩家 $i$为在实际执行动作 $a\_i^A$时没有交替执行动作 $a\_i'$的加权**内遗憾值**为
+类似地，我们可以定义玩家 $i$为在实际执行动作 $a_i^A$时没有交替执行动作 $a_i'$的加权**内遗憾值**为
 
 $$
-R\_i^{I, T}(a\_i^A, a\_i') = \sum\_{t=1}^T \mathbb{1}\[a\_i^t = a\_i^A] w\_t\left( u\_i(a\_i', a\_{-i}^t) - u\_i(a^t)\right)
+R_i^{I, T}(a_i^A, a_i') = \sum_{t=1}^T \mathbb{1}[a_i^t = a_i^A] w_t\left( u_i(a_i', a_{-i}^t) - u_i(a^t)\right)
 $$
 
 然后整体平均内遗憾值为
 
 $$
-\bar{R}*i^{I, T} = \max*{a\_i', a\_I^A \in A\_i} \frac{R\_i^{I, T}(a\_i^A, a\_i'）}{\sum\_{t=1}^T w\_t}
+\bar{R}*i^{I, T} = \max*{a_i', a_I^A \in A_i} \frac{R_i^{I, T}(a_i^A, a_i'）}{\sum_{t=1}^T w_t}
 $$
 
-定义所有玩家平均外遗憾向量为  $\bar{\mathbf{R}}^{E, T}$，平均内遗憾值为$\bar{\mathbf{R}}^{I, T}$。$R\_+$为$\max(0, R)$。
+定义所有玩家平均外遗憾向量为  $\bar{\mathbf{R}}^{E, T}$，平均内遗憾值为$\bar{\mathbf{R}}^{I, T}$。$R_+$为$\max(0, R)$。
 
-过去结论证明，最小化所有玩家的平均外遗憾值得到粗相关均衡，最小化所有玩家的平均内遗憾值得到相关均衡。存在许多著名算法来同时最小化内遗憾值和外遗憾值。在我们外遗憾值最小化实验中，我们使用Blackwell的遗憾值最小化，要求每个玩家根据正遗憾值来选择下个动作。即每个玩家在时间点 $t+1$选择动作$a\_i$的概率为
+过去结论证明，最小化所有玩家的平均外遗憾值得到粗相关均衡，最小化所有玩家的平均内遗憾值得到相关均衡。存在许多著名算法来同时最小化内遗憾值和外遗憾值。在我们外遗憾值最小化实验中，我们使用Blackwell的遗憾值最小化，要求每个玩家根据正遗憾值来选择下个动作。即每个玩家在时间点 $t+1$选择动作$a_i$的概率为
 
 $$
-\Pr(a\_i^{t+1} = a\_i) = \frac{R\_{i, +}^{E, t}(a\_i)}{\sum\_{a\_i' \in A\_i} R\_{i, +}^{E, t}(a\_i')}
+\Pr(a_i^{t+1} = a_i) = \frac{R_{i, +}^{E, t}(a_i)}{\sum_{a_i' \in A_i} R_{i, +}^{E, t}(a_i')}
 $$
 
 除了当所有的遗憾值都为非正时，均匀选择动作。
@@ -58,32 +58,32 @@ $$
 对于内遗憾值最小化，我们主要使用Blackwell的遗憾值最小化的扩展，称为遗憾值匹配算法。遗憾值匹配算法额外添加了一个固定的惯性参数 $\alpha$，因此总是保持一个正概率，以概率1总遗憾值消失。
 
 $$
-\operatorname{Pr}\left(a\_{i}^{t+1}=a\_{i}\right)= \begin{cases}\frac{\alpha}{\alpha+\sum\_{a\_{i}^{\prime} \in A\_{i}} R\_{i,+}^{I, t}\left(a\_{i}^{t}, a\_{i}^{\prime}\right)}, & \text { if } a\_{i}=a\_{i}^{t} \ \frac{R\_{i,+}^{I, t}\left(a\_{i}^{t}, a\_{i}\right)}{\alpha+\sum\_{a\_{i}^{\prime} \in A\_{i}} R\_{i,+}^{I, t}\left(a\_{i}^{t}, a\_{i}^{\prime}\right)}, & \text { otherwise }\end{cases}
+\operatorname{Pr}\left(a_{i}^{t+1}=a_{i}\right)= \begin{cases}\frac{\alpha}{\alpha+\sum_{a_{i}^{\prime} \in A_{i}} R_{i,+}^{I, t}\left(a_{i}^{t}, a_{i}^{\prime}\right)}, & \text { if } a_{i}=a_{i}^{t} \\ \frac{R_{i,+}^{I, t}\left(a_{i}^{t}, a_{i}\right)}{\alpha+\sum_{a_{i}^{\prime} \in A_{i}} R_{i,+}^{I, t}\left(a_{i}^{t}, a_{i}^{\prime}\right)}, & \text { otherwise }\end{cases}
 $$
 
 许多理论证明使用势能函数的检验，定义为正遗憾值的平方的和。遗憾值匹配算法最小化的函数为：
 
 $$
-\phi(\bar{\mathbf{R}}^{E, T})=\sum\_{i\in P}\sum\_{a\_i' \in A\_i}\left(\bar R\_{i, +}^{E, T}(a\_i')\right)^2
+\phi(\bar{\mathbf{R}}^{E, T})=\sum_{i\in P}\sum_{a_i' \in A_i}\left(\bar R_{i, +}^{E, T}(a_i')\right)^2
 $$
 
 $$
-\phi(\bar{\mathbf{R}}^{I, T})=\sum\_{i\in P}\sum\_{a\_i^A, a\_i^B\in A\_i}\left(\bar R\_{i, +}^{I, T}(a\_i^A, a\_i^B)\right)^2
+\phi(\bar{\mathbf{R}}^{I, T})=\sum_{i\in P}\sum_{a_i^A, a_i^B\in A_i}\left(\bar R_{i, +}^{I, T}(a_i^A, a_i^B)\right)^2
 $$
 
-外遗憾值匹配保证 $\phi(\bar{\mathbf{R}}^{E, T}) \le \frac{|P|\Delta^2|A|}{T}$，从而保证 $\max\_{i\in P}\max{a\_i \in A\_i} \bar{R}\_i^{E, T}(a\_i) \le \frac{\Delta\sqrt{|P||A|}}{\sqrt{T}}$。如果所有玩家的平均遗憾值被 $\epsilon$约束，则平均策略是 $O(\epsilon)-$纳什均衡。
+外遗憾值匹配保证 $\phi(\bar{\mathbf{R}}^{E, T}) \le \frac{|P|\Delta^2|A|}{T}$，从而保证 $\max_{i\in P}\max{a_i \in A_i} \bar{R}_i^{E, T}(a_i) \le \frac{\Delta\sqrt{|P||A|}}{\sqrt{T}}$。如果所有玩家的平均遗憾值被 $\epsilon$约束，则平均策略是 $O(\epsilon)-$纳什均衡。
 
 ## 贪心权重
 
 ![](https://s2.loli.net/2022/04/02/UNgmO7P1T8rJjZq.png)
 
-将均衡解集合表示为$E$，在第$t$次迭代，令$\bar{\pi}^{t-1}$表示加权平均策略，$\pi^t$表示第$t$次迭代使用的策略。遗憾值用$\bar{\mathbf{R}}^{t-1}$和$\mathbf{r}^t$表示。朴素遗憾最小化算法给予每次迭代的权重为 $\frac{1}{t}$，然而其他的加权方式可能使得平均策略更加接近均衡解。相比而言，贪心加权在$\bar{\pi}^{t-1}$和$\pi^t$之间选择合适权重来最小化衡量新的平均策略$\bar{\pi}\_\*^t$与纳什均衡解距离的势能函数。贪心加权在每次迭代中选择权重，来贪心最小化$ \phi\_i^{E, T}  $或$\phi\_i^{I, T}$。
+将均衡解集合表示为$E$，在第$t$次迭代，令$\bar{\pi}^{t-1}$表示加权平均策略，$\pi^t$表示第$t$次迭代使用的策略。遗憾值用$\bar{\mathbf{R}}^{t-1}$和$\mathbf{r}^t$表示。朴素遗憾最小化算法给予每次迭代的权重为 $\frac{1}{t}$，然而其他的加权方式可能使得平均策略更加接近均衡解。相比而言，贪心加权在$\bar{\pi}^{t-1}$和$\pi^t$之间选择合适权重来最小化衡量新的平均策略$\bar{\pi}_*^t$与纳什均衡解距离的势能函数。贪心加权在每次迭代中选择权重，来贪心最小化$ \phi_i^{E, T}  $或$\phi_i^{I, T}$。
 
 ![](https://s2.loli.net/2022/04/02/Yw2HhBJkZsxO3m1.png)
 
 我们在算法1中描述了完整的贪心加权程序。在每次迭代中用$\mathbf{R}$来表示所有玩家的遗憾值向量，用来确定每次的策略$\pi$，策略$\pi$得到的瞬时遗憾值用$\mathbf{r}$表示。接着计算最小化势能函数的$\mathbf{r}$的权重$w$。遗憾值向量和平均策略使用相同权重$w$更新。为了减少数值不稳定性和移除，衰减已计算的遗憾值和平均策略组合是有益的。在实际实验中，将先前的迭代衰减$\frac{1}{w}$并加权1。
 
-与许多贪心算法类似，贪心加权不能保证比朴素遗憾值匹配算法收敛更快。在两人零和博弈的实验中观测到设置权重下限$\frac{w\_{sum}}{2t}$有助于加速收敛。在所有其他设定中，没有观测到这一现象。
+与许多贪心算法类似，贪心加权不能保证比朴素遗憾值匹配算法收敛更快。在两人零和博弈的实验中观测到设置权重下限$\frac{w_{sum}}{2t}$有助于加速收敛。在所有其他设定中，没有观测到这一现象。
 
 计算最优权重是线性搜索的过程。该过程可以用二项搜索或直接检验$\mathcal{O}(|\mathcal{P}||\mathcal{A}|)$个点来近似。这种方法在$\mathbf{r}$计算很昂贵时很有用（比如使用神经网络价值函数）。引文线性搜索只需要一次$\mathbf{r}$的评估，计算$\phi(\mathbf{R} + w\mathbf{r})$时一个简单的代数函数，不需要额外的奖励函数。
 
