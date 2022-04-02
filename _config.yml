@@ -9,7 +9,7 @@ description:
 keywords: blog, xu hang
 author: Xu Hang
 language: zh-CN
-timezone:
+timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -80,7 +80,7 @@ theme: next
 deploy:
   type: git
   repository: ssh://git@github.com/rpSebastian/rpSebastian.github.io.git
-  branch: master
+  branch: main
 
 # hexo-neat
 # 博文压缩

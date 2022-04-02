@@ -3,8 +3,9 @@ title: 服务器搭建jupyter notebook
 mathjax: true
 date: 2020-01-18 17:00:05
 categories: 
-	- server
+	- Server
 tags:
+	- Server
 ---
 
 ### anaconda 创建环境并激活
