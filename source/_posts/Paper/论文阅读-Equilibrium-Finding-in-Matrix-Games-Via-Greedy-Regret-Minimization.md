@@ -30,13 +30,13 @@ tags:
 对于任意的策略序列 $\pi^1, ...,\pi^T$，玩家$i$为没有执行动作 $a_i'$的的加权**外遗憾值**为
 
 $$
-R^{E, T} *i(a_i ') = \sum*{t=1}^T w_t\left(u_i(a_i ', \pi_{-i}^t ) - u_i(\pi^t)\right)
+R^{E, T} _i(a_i ') = \sum_{t=1}^T w_t\left(u_i(a_i ', \pi_{-i}^t ) - u_i(\pi^t)\right)
 $$
 
 然后可以定义玩家$ i  $整体平均外遗憾值
 
 $$
-\bar{R}*i^{E, T} = \max*{a_i '\in A_i}\frac{R_i^{E, T}(a_i')}{\sum_{i=1}^T w_t}
+\bar{R}_i^{E, T} = \max_{a_i '\in A_i}\frac{R_i^{E, T}(a_i')}{\sum_{i=1}^T w_t}
 $$
 
 类似地，我们可以定义玩家 $i$为在实际执行动作 $a_i^A$时没有交替执行动作 $a_i'$的加权**内遗憾值**为
@@ -48,7 +48,7 @@ $$
 然后整体平均内遗憾值为
 
 $$
-\bar{R}*i^{I, T} = \max*{a_i', a_I^A \in A_i} \frac{R_i^{I, T}(a_i^A, a_i'）}{\sum_{t=1}^T w_t}
+\bar{R}_i^{I, T} = \max_{a_i', a_I^A \in A_i} \frac{R_i^{I, T}(a_i^A, a_i'）}{\sum_{t=1}^T w_t}
 $$
 
 定义所有玩家平均外遗憾向量为  $\bar{\mathbf{R}}^{E, T}$，平均内遗憾值为$\bar{\mathbf{R}}^{I, T}$。$R_+$为$\max(0, R)$。
