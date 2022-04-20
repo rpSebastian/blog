@@ -95,13 +95,15 @@ kinks指目标函数中不可微分的部分，比如ReLU。考虑ReLU函数在x
 
 ### 损失函数
 
-![](https://secure2.wostatic.cn/static/tgaj6B5jqBdKaUasJncTn1/image.png)
+![image.png](https://s2.loli.net/2022/04/20/8LUl9nXrJSIbFEk.png)
 
 较高的学习率在前期能快速降低损失，但是最后陷入较差值。因为优化中存在过多能量，使得参数在混乱中跳越，无法到达一个合适的位置。
 
 有时以对数打印损失函数更好，因为损失函数以指数下降。
 
 ### 训练/验证准确率
+
+![image _1_.png](https://s2.loli.net/2022/04/20/ipBrwGX6SZAVhDa.png)
 
 训练准确率和验证准确率表明过拟合程度。在过拟合时，可以增加正则化程度（更大的L2权重，更多的dropout，收集更多数据）。
 
@@ -128,7 +130,7 @@ print update_scale / param_scale # want ~1e-3
 
 ### 第一层可视化
 
-![](https://secure2.wostatic.cn/static/r8vtivRccEBsuiYwWnSBDx/image.png)
+![image _2_.png](https://s2.loli.net/2022/04/20/WJZQSRKEPyfAsTH.png)
 
 ## 参数更新
 
@@ -163,7 +165,7 @@ x += v
 
 当前的参数向量在位置$x$处时，仅仅看momentum的更新，可以直到momentum项将推动参数向量$mu*v$，到达 $x+mu*v$。因此可以计算在$x+mu*v$位置的加速度，而不是旧位置$x$。
 
-![](https://secure2.wostatic.cn/static/kpLsNFk82YLatAZJVgkAAH/image.png)
+![image _3_.png](https://s2.loli.net/2022/04/20/7AuIp2jJyq6TvXC.png)
 
 ```Python
 x_ahead = x + mu * v
@@ -267,6 +269,7 @@ x += - learning_rate * mt / (np.sqrt(vt) + eps)
 ```
 
 ![](https://cs231n.github.io/assets/nn3/opt2.gif) 
+
 ![](https://cs231n.github.io/assets/nn3/opt1.gif)
 
 ## 超参数优化
